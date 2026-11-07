@@ -12,42 +12,47 @@ desktop/mobile views.
 
 ## Structure
 
-- `main.py`, `routers.py`, `schemas.py`, `security.py`: API and auth
-- `models.py`, `database.py`: SQLAlchemy models and sessions
-- `migrations/`: Alembic migrations
-- `frontend/`: SvelteKit client and PWA assets
+- `backend/`: FastAPI API, SQLAlchemy models, Alembic migrations, and tests
+- `frontend/`: SvelteKit client, responsive UI, and PWA assets
 
-## Local setup
+## Local Setup
 
-1. Copy `.env.example` to `.env` and set `DATABASE_URL` and a long `JWT_SECRET`.
-2. Create and activate a Python environment, then install dependencies:
+### 1. Backend
 
+1. Navigate to `backend`:
+   ```powershell
+   cd backend
+   ```
+2. Copy `.env.example` to `.env` and set `DATABASE_URL` and `JWT_SECRET`.
+3. Create and activate a Python virtual environment:
    ```powershell
    python -m venv .venv
    .\.venv\Scripts\Activate.ps1
    pip install -r requirements.txt
    ```
-
-3. Apply migrations and start the API:
-
+4. Run migrations and start API:
    ```powershell
    alembic upgrade head
    uvicorn main:app --reload
    ```
 
-   API documentation is available at `http://localhost:8000/docs`.
+API documentation will be available at `http://localhost:8000/docs`.
 
-4. Start the frontend:
+### 2. Frontend
 
+1. Navigate to `frontend`:
    ```powershell
    cd frontend
    npm install
    npm run dev
    ```
 
+Access the web app at `http://localhost:5173`.
+
 ## Tests
 
-Run backend tests with `pytest`. The API uses the configured database; for an
-isolated local run set `DATABASE_URL=sqlite:///./test.db`.
-
-Never commit `.env`, credentials, JWT secrets, or database URLs.
+Run backend tests from the `backend` directory:
+```powershell
+cd backend
+pytest
+```
