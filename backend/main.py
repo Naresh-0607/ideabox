@@ -24,11 +24,11 @@ app.add_middleware(
 )
 app.include_router(router)
 
-@app.get('/', methods = ["GET", "HEAD"])
+@app.api_route('/', methods = ["GET", "HEAD"])
 async def greet():
     return({"IdeaBox":"Active"})
 
-@app.get("/health", methods = ["GET", "HEAD"])
+@app.api_route("/health", methods = ["GET", "HEAD"])
 async def health():
     try:
         with engine.connect() as connection:
