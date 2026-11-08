@@ -11,7 +11,7 @@ origins = [
     origin.strip()
     for origin in os.getenv(
         "FRONTEND_URL",
-        "http://localhost:5173,https://ideabox-5pw.pages.dev/"
+        "http://localhost:5173,https://ideabox-5pw.pages.dev"
     ).split(",")
     if origin.strip()
 ]
