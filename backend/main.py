@@ -8,7 +8,7 @@ from routers import router
 
 app = FastAPI(title="IdeaBox API", version="1.0.0")
 origins = [origin.strip() for origin in os.getenv(
-    "CORS_ORIGINS", "http://localhost:5173,http://localhost:4173"
+    "CORS_ORIGINS", "http://localhost:5173,http://localhost:4173","https://ideabox-5pw.pages.dev/"
 ).split(",") if origin.strip()]
 app.add_middleware(
     CORSMiddleware,
